@@ -19,7 +19,7 @@ To make possible to use it, you need to add reference to the PRISDK100.dll assem
 
 ## How to use?
 
-In order to the components work the first thing you must do is initialize the SDK Context. The initialization will validate if the ERP is available at the system and return the PSO and BSO.
+In order to the components work the first thing you must do is initialize the SDK Context. The initialization will validate if the ERP is available and return the PSO and BSO.
 
 Where how you can do:
 
