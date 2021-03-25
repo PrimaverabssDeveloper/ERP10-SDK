@@ -76,25 +76,6 @@ private void InicializeSDKContext()
 }
 ```
 
-Other important thing is to release all the resources use by each component, to do that user the *Termina()* method:
-
-```csharp
-private void Dispose()
-{
-    treeContasEstado1.Termina();
-    tiposEntidade1.Termina();
-    f4Entidade.Termina();
-}
-```
-
-## Enumeration
-
-The SDK provide some constants that are useful to configure the controls behavior. This enums are available in the class *clsSDKTypes*.
-
-```csharp
-clsSDKTypes.EnumCategoria.Clientes;
-```
-
 ## Contributing and Feedback
 
 Everyone is free to contribute to the repository.
