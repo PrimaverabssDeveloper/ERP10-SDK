@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            StdBase100.StdBETipoEntidade stdBETipoEntidade1 = new StdBase100.StdBETipoEntidade();
+            StdBase100.StdBETipoEntidade stdBETipoEntidade5 = new StdBase100.StdBETipoEntidade();
             this.tiposEntidade1 = new PRISDK100.TiposEntidade();
             this.statesCheckBox = new System.Windows.Forms.CheckBox();
             this.outstandingCheckBox = new System.Windows.Forms.CheckBox();
@@ -37,24 +37,26 @@
             this.treeContasEstado1 = new PRISDK100.TreeContasEstado();
             this.textboxRestriction = new System.Windows.Forms.TextBox();
             this.f41 = new PRISDK100.F4();
+            this.f4TabelaSQL1 = new PRISDK100.F4TabelaSQL();
+            this.treeDocumentos1 = new PRISDK100.TreeDocumentos();
             this.SuspendLayout();
             // 
             // tiposEntidade1
             // 
             this.tiposEntidade1.Activo = true;
             this.tiposEntidade1.Caption = "Tipo de Entidade:";
-            stdBETipoEntidade1.AcedeOperacao = false;
-            stdBETipoEntidade1.Audit = "";
-            stdBETipoEntidade1.Campo_Chave = "";
-            stdBETipoEntidade1.Categoria = "";
-            stdBETipoEntidade1.Descricao = "";
-            stdBETipoEntidade1.DescricaoPlural = "";
-            stdBETipoEntidade1.Modulo = "";
-            stdBETipoEntidade1.Natureza = "";
-            stdBETipoEntidade1.Tabela = "";
-            stdBETipoEntidade1.TipoEntidade = "";
-            stdBETipoEntidade1.Visivel = false;
-            this.tiposEntidade1.Contexto = stdBETipoEntidade1;
+            stdBETipoEntidade5.AcedeOperacao = false;
+            stdBETipoEntidade5.Audit = "";
+            stdBETipoEntidade5.Campo_Chave = "";
+            stdBETipoEntidade5.Categoria = "";
+            stdBETipoEntidade5.Descricao = "";
+            stdBETipoEntidade5.DescricaoPlural = "";
+            stdBETipoEntidade5.Modulo = "";
+            stdBETipoEntidade5.Natureza = "";
+            stdBETipoEntidade5.Tabela = "";
+            stdBETipoEntidade5.TipoEntidade = "";
+            stdBETipoEntidade5.Visivel = false;
+            this.tiposEntidade1.Contexto = stdBETipoEntidade5;
             this.tiposEntidade1.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.tiposEntidade1.LarguraLink = 0;
             this.tiposEntidade1.Location = new System.Drawing.Point(11, 12);
@@ -111,7 +113,7 @@
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(621, 216);
+            this.closeButton.Location = new System.Drawing.Point(617, 292);
             this.closeButton.Margin = new System.Windows.Forms.Padding(2);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(111, 25);
@@ -151,6 +153,7 @@
             // 
             // f41
             // 
+            this.f41.AgrupaOutrosTerceiros = false;
             this.f41.Audit = "mnuTabClientes";
             this.f41.AutoComplete = false;
             this.f41.BackColorLocked = System.Drawing.SystemColors.ButtonFace;
@@ -189,11 +192,45 @@
             this.f41.WidthF4 = 1590;
             this.f41.WidthLink = 1575;
             // 
-            // frmDemo
+            // f4TabelaSQL1
+            // 
+            this.f4TabelaSQL1.AliasCampoChave = "";
+            this.f4TabelaSQL1.CampoChave = "Cliente";
+            this.f4TabelaSQL1.CampoDescricao = "";
+            this.f4TabelaSQL1.Caption = "Cliente";
+            this.f4TabelaSQL1.F4Modal = false;
+            this.f4TabelaSQL1.Inicializado = false;
+            this.f4TabelaSQL1.Location = new System.Drawing.Point(12, 220);
+            this.f4TabelaSQL1.MaxLengthF4 = 50;
+            this.f4TabelaSQL1.Modulo = "BAS";
+            this.f4TabelaSQL1.MostraCaption = true;
+            this.f4TabelaSQL1.Name = "f4TabelaSQL1";
+            this.f4TabelaSQL1.ResourceID = 0;
+            this.f4TabelaSQL1.ResourceIDTituloLista = 0;
+            this.f4TabelaSQL1.SelectionFormula = "SELECT C.Cliente, C.Nome,C.Fac_Tel, C.Fac_Mor, C.Distrito ,C.NumContrib  FROM Cli" +
+    "entes C";
+            this.f4TabelaSQL1.Size = new System.Drawing.Size(528, 21);
+            this.f4TabelaSQL1.TabIndex = 9;
+            this.f4TabelaSQL1.TituloLista = "Clientes";
+            this.f4TabelaSQL1.WidthCaption = 1000;
+            this.f4TabelaSQL1.WidthEspacamento = 60;
+            this.f4TabelaSQL1.WidthF4 = 1590;
+            // 
+            // treeDocumentos1
+            // 
+            this.treeDocumentos1.AnoAte = 2021;
+            this.treeDocumentos1.AnoDe = 2021;
+            this.treeDocumentos1.Location = new System.Drawing.Point(78, 257);
+            this.treeDocumentos1.Name = "treeDocumentos1";
+            this.treeDocumentos1.Size = new System.Drawing.Size(462, 60);
+            this.treeDocumentos1.TabIndex = 10;
+            // 
+            // frmDemo1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 250);
+            this.Controls.Add(this.treeDocumentos1);
+            this.Controls.Add(this.f4TabelaSQL1);
             this.Controls.Add(this.f41);
             this.Controls.Add(this.textboxRestriction);
             this.Controls.Add(this.treeContasEstado1);
@@ -206,7 +243,8 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmDemo";
+            this.Name = "frmDemo1";
+            this.Size = new System.Drawing.Size(743, 333);
             this.Text = "PRIMAVERA SDK Sample";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDemo_FormClosed);
             this.Load += new System.EventHandler(this.frmDemo_Load);
@@ -225,5 +263,7 @@
         private PRISDK100.TreeContasEstado treeContasEstado1;
         private System.Windows.Forms.TextBox textboxRestriction;
         private PRISDK100.F4 f41;
+        private PRISDK100.F4TabelaSQL f4TabelaSQL1;
+        private PRISDK100.TreeDocumentos treeDocumentos1;
     }
 }

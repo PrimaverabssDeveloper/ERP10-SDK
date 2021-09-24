@@ -31,7 +31,8 @@ namespace PrimaveraSDK
                 treeContasEstado1.Inicializa(PriSDKContext.SdkContext);
                 tiposEntidade1.Inicializa(PriSDKContext.SdkContext);
                 f41.Inicializa(PriSDKContext.SdkContext);
-
+                treeDocumentos1.Inicializa(PriSDKContext.SdkContext);
+                f4TabelaSQL1.Inicializa(PriSDKContext.SdkContext);
                 controlsInitialized = true;
             }
         }
