@@ -31,8 +31,16 @@ namespace PrimaveraSDK
                 treeContasEstado1.Inicializa(PriSDKContext.SdkContext);
                 tiposEntidade1.Inicializa(PriSDKContext.SdkContext);
                 f41.Inicializa(PriSDKContext.SdkContext);
-                treeDocumentos1.Inicializa(PriSDKContext.SdkContext);
+
                 f4TabelaSQL1.Inicializa(PriSDKContext.SdkContext);
+                f4TabelaSQL1.Caption = "Cliente";
+                f4TabelaSQL1.AliasCampoChave = "Cliente";
+                f4TabelaSQL1.CampoChave = "Cliente";
+                f4TabelaSQL1.CampoDescricao = "Nome";
+                f4TabelaSQL1.Modulo = "BAS";
+
+                f4TabelaSQL1.SelectionFormula = "SELECT C.Cliente, C.Nome,C.Fac_Tel, C.Fac_Mor, C.Distrito ,C.NumContrib  FROM Clientes C";
+
                 controlsInitialized = true;
             }
         }
