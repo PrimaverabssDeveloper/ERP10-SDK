@@ -14,6 +14,7 @@ namespace PrimaveraSDK
 
         // Column name consts
         // Normal columns
+        private const string colModuloDescKey = "ModuloDesc";
         private const string colModuloDesc = "ModuloDesc = ''";
         private const string colEntidade = "Entidade";
         private const string colTipoDoc = "TipoDoc";
@@ -24,6 +25,7 @@ namespace PrimaveraSDK
         private const string colValorTotal = "ValorTotal";
         private const string colValorPendente = "ValorPendente";
         // Calculated column
+        private const string colDiasAtrasoKey = "DiasAtraso";
         private const string colDiasAtraso = "DiasAtraso = DATEDIFF(d, GETDATE(), DataVenc)";
         // Hidden column
         private const string colModulo = "Modulo";
@@ -109,9 +111,9 @@ namespace PrimaveraSDK
             SetModuloDesc(e.Row);
 
             // Set days of delay
-            int daysOfDelay = PSO.Utils.FInt(priGrelha1.GetGRID_GetValorCelula(e.Row, colDiasAtraso));
+            int daysOfDelay = PSO.Utils.FInt(priGrelha1.GetGRID_GetValorCelula(e.Row, colDiasAtrasoKey));
             daysOfDelay = daysOfDelay < 0 ? Math.Abs(daysOfDelay) : 0;
-            priGrelha1.SetGRID_SetValorCelula(e.Row, colDiasAtraso, daysOfDelay);
+            priGrelha1.SetGRID_SetValorCelula(e.Row, colDiasAtrasoKey, daysOfDelay);
         }
 
         private void priGrelha1_FormatacaoAlterada(object Sender, PriGrelha.FormatacaoAlteradaEventArgs e)
@@ -189,7 +191,7 @@ namespace PrimaveraSDK
                     StdBrandingInfo100.Properties.RibbonResourcesVND.clientes_16);
 
             // Normal columns
-            priGrelha1.AddColKey(colModuloDesc, FpCellType.CellTypeEdit, "Módulo", 10, true, strCamposBaseDados: colModulo);
+            priGrelha1.AddColKey(colModuloDescKey, FpCellType.CellTypeEdit, "Módulo", 10, true, strCamposBaseDados: colModuloDesc);
             priGrelha1.AddColKey(colEntidade, FpCellType.CellTypeEdit, "Entidade", 24, true, strCamposBaseDados: colEntidade, blnDrillDown: true);
             priGrelha1.AddColKey(colTipoDoc, FpCellType.CellTypeEdit, "Tipo Doc.", 10, true, strCamposBaseDados: colTipoDoc);
             priGrelha1.AddColKey(colSerie, FpCellType.CellTypeEdit, "Série", 10, true, strCamposBaseDados: colSerie);
@@ -201,7 +203,7 @@ namespace PrimaveraSDK
             
             // Calculeted column
             priGrelha1.AddColKey(colModulo, FpCellType.CellTypeEdit, "Modulo", 2, true, false, strCamposBaseDados: colModulo);
-            priGrelha1.AddColKey(colDiasAtraso, FpCellType.CellTypeInteger, "Dias Atraso", 8, true, strCamposBaseDados: colDiasAtraso, blnColunaTotalizador: true);
+            priGrelha1.AddColKey(colDiasAtrasoKey, FpCellType.CellTypeInteger, "Dias Atraso", 8, true, strCamposBaseDados: colDiasAtraso, blnColunaTotalizador: true);
             // Hidden column
             priGrelha1.AddColKey(colTipoEntidade, FpCellType.CellTypeEdit, "TipoEntidade", 2, true, false, strCamposBaseDados: colTipoEntidade);
             priGrelha1.AddColKey(colFilial, FpCellType.CellTypeEdit, "Filial", 2, true, false, strCamposBaseDados: colFilial);
@@ -209,7 +211,7 @@ namespace PrimaveraSDK
 
             //Default grouping
             priGrelha1.AdicionaAgrupamento(priGrelha1.Cols.GetEdita(colEntidade).Number);
-            priGrelha1.AdicionaAgrupamento(priGrelha1.Cols.GetEdita(colModuloDesc).Number);
+            priGrelha1.AdicionaAgrupamento(priGrelha1.Cols.GetEdita(colModuloDescKey).Number);
 
             // Set greid default behavior
             priGrelha1.TituloGrelha = "Demo Grid 1";
@@ -223,7 +225,7 @@ namespace PrimaveraSDK
             priGrelha1.PermiteVistas = true;
 
             // Read the last grid layout for the current user.
-            if (!priGrelha1.LeXML("GRIDDEMO", BSO.Contexto.UtilizadorActual, GridName, GridName, GridVersion))
+            if (!priGrelha1.LeXML("ERP", BSO.Contexto.UtilizadorActual, GridName, GridName, GridVersion))
             {
                 priGrelha1.FormataGrelha(true);
             }
@@ -303,7 +305,7 @@ namespace PrimaveraSDK
                     break;
             }
 
-            priGrelha1.SetGRID_SetValorCelula(row, colModuloDesc, moduloDesc);
+            priGrelha1.SetGRID_SetValorCelula(row, colModuloDescKey, moduloDesc);
         }
 
         private void ExecuteDrillDown()
