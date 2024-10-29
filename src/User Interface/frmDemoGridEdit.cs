@@ -306,40 +306,46 @@ namespace PrimaveraSDK
                 "Quebra\t" +
                 "Defeito";
         }
-
-        public void F4RowFields(string Categoria, string NomeCampo, dynamic Valor)
+        
+        
+        private void priGrelha1_LeaveCell(object Sender, PriGrelha.LeaveCellEventArgs e)
         {
-            try
+            if (e.Col == e.NewCol)
+                return;
+                
+            //Tratar o F4 na priGrelha1
+            if (F4FromPLT() == true)
             {
-                if (Categoria == ConstantesPrimavera100.Categorias.Artigo)
+                if (e.Col == priGrelha1.Cols.GetEdita(colArtigo).Number)
                 {
-                    TrataColuna_Artigo(priGrelha1.Grelha.ActiveRow);
+                    TrataColuna_Artigo(e.Row);
                 }
-                else if (Categoria == ConstantesPrimavera100.Categorias.Unidade)
+                else if (e.Col == priGrelha1.Cols.GetEdita(colEntidade).Number)
+                {
+                    TrataColuna_Entidade(e.Row);
+                }
+                else if (e.Col == priGrelha1.Cols.GetEdita(colUnidade).Number)
                 {
                     TrataColuna_Unidade(priGrelha1.Grelha.ActiveRow);
                 }
-                else if ((Categoria == ConstantesPrimavera100.Categorias.Cliente) || (Categoria == ConstantesPrimavera100.Categorias.Fornecedor) || (Categoria == ConstantesPrimavera100.Categorias.OutroTerceiro))
-                {
-                    TrataColuna_Entidade(priGrelha1.Grelha.ActiveRow);
-                }
-                else if (Categoria == ConstantesPrimavera100.Categorias.Armazem)
+                else if (e.Col == priGrelha1.Cols.GetEdita(colArmazem).Number)
                 {
                     TrataColuna_Armazem(priGrelha1.Grelha.ActiveRow);
                 }
-                else if (Categoria == ConstantesPrimavera100.Categorias.ArmazemLocalizacoes)
+                else if (e.Col == priGrelha1.Cols.GetEdita(colLocalizacao).Number)
                 {
                     TrataColuna_Localizacao(priGrelha1.Grelha.ActiveRow);
                 }
-                else if (Categoria == ConstantesPrimavera100.Categorias.EstadosInventario)
+                else if (e.Col == priGrelha1.Cols.GetEdita(colEstado).Number)
                 {
                     TrataColuna_Estado(priGrelha1.Grelha.ActiveRow);
                 }
             }
-            catch (Exception ex)
-            {
-                PSO.Dialogos.MostraErro("Erro ao carregar o registo.", StdPlatBS100.StdBSTipos.IconId.PRI_Exclama, ex.Message, ex);
-            }
+        }
+        
+        private bool F4FromPLT()
+        {
+            return new StackTrace().GetFrames().Any(r => r.GetMethod().Name.Contains("AtribuiValoresF4"));
         }
 
         private void ExecuteDrillDown()
