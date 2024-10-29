@@ -150,6 +150,8 @@
             this.priGrelha1.MenuContextoSeleccionado += new PRISDK100.PriGrelha.MenuContextoSeleccionadoHandler(this.priGrelha1_MenuContextoSeleccionado);
             this.priGrelha1.EditMode += new PRISDK100.PriGrelha.EditModeHandler(this.priGrelha1_EditMode);
             this.priGrelha1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.priGrelha1_KeyDown);
+            this.priGrelha1.LeaveCell += new PRISDK100.PriGrelha.LeaveCellHandler(this.priGrelha1_LeaveCell);
+            
             // 
             // panel3
             // 
